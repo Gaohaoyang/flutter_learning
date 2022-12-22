@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learning/Pages/ExpandedDemo.dart';
 import 'package:flutter_learning/Pages/NinjaCard.dart';
 import 'package:flutter_learning/Pages/StatefulDemo.dart';
+import 'package:flutter_learning/Pages/SimpleList.dart';
 
 void main() {
   runApp(const MaterialApp(home: Home()));
@@ -46,6 +47,15 @@ class Home extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const NinjaCardStatefulDemo())
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('SimpleList'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SimpleList())
               );
             },
           )
