@@ -4,13 +4,47 @@ import './Pages/NinjaCard.dart';
 import './Pages/StatefulDemo.dart';
 import './Pages/SimpleList.dart';
 import './Pages/ObjectList.dart';
+import './Pages/ObjectListWithCard.dart';
+import './DataModel/HomePageListItem.dart';
 
 void main() {
   runApp(const MaterialApp(home: Home()));
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  List<HomePageListItem> homePageList = [
+    HomePageListItem(
+      itemName: 'Expanded',
+      pageWidget: const ExpandedDemo(),
+    ),
+    HomePageListItem(
+      itemName: 'NinjaId Card',
+      pageWidget: const NinjaCard(),
+    ),
+    HomePageListItem(
+      itemName: 'Stateful Demo',
+      pageWidget: const NinjaCardStatefulDemo(),
+    ),
+    HomePageListItem(
+      itemName: 'SimpleList',
+      pageWidget: const SimpleList(),
+    ),
+    HomePageListItem(
+      itemName: 'ObjectList(Book List)',
+      pageWidget: const ObjectList(),
+    ),
+    HomePageListItem(
+      itemName: 'ObjectListWithCard(Book List)',
+      pageWidget: const ObjectListWithCard(),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,53 +57,17 @@ class Home extends StatelessWidget {
         // backgroundColor: Colors.red[600],
       ),
       body: ListView(
-        children: [
+        children: homePageList.map((item) =>
           ListTile(
-            title: const Text('Expanded'),
+            title: Text(item.itemName),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ExpandedDemo())
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('NinjaId'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NinjaCard())
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Stateful Demo'),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const NinjaCardStatefulDemo())
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('SimpleList'),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SimpleList())
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('ObjectList(Book List)'),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ObjectList())
+                MaterialPageRoute(builder: (context) => item.pageWidget)
               );
             },
           )
-        ],
+        ).toList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {print('clicked')},
