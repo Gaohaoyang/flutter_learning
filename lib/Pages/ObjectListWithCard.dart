@@ -29,38 +29,43 @@ class _ObjectListWithCardState extends State<ObjectListWithCard> {
     ),
   ];
 
+  Widget cardTemplate(Book bookItem) {
+    return Card(
+      margin: const EdgeInsets.fromLTRB(18, 18, 18, 0),
+      color: Colors.grey[100],
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 5, 12, 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              bookItem.name,
+              style: const TextStyle(
+                fontSize: 18,
+                height: 1.6
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              bookItem.author
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: const Text('ObjectListWithCard(Book List)'),
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: bookList.map((item) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                item.name,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontStyle: FontStyle.italic
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(item.author),
-                ],
-              ),
-              const SizedBox(height: 40)
-            ],
-          )).toList(),
-        ),
+      body: Column(
+        children: bookList.map((e) => cardTemplate(e)).toList(),
       ),
     );
   }
