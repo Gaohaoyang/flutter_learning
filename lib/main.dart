@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning/Pages/ExpandedDemo.dart';
-import 'package:flutter_learning/Pages/NinjaCard.dart';
-import 'package:flutter_learning/Pages/StatefulDemo.dart';
-import 'package:flutter_learning/Pages/SimpleList.dart';
+import './Pages/ExpandedDemo.dart';
+import './Pages/NinjaCard.dart';
+import './Pages/StatefulDemo.dart';
+import './Pages/SimpleList.dart';
+import './Pages/ObjectList.dart';
 
 void main() {
   runApp(const MaterialApp(home: Home()));
@@ -56,6 +57,15 @@ class Home extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const SimpleList())
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('ObjectList(Book List)'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ObjectList())
               );
             },
           )

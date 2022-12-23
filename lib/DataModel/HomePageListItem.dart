@@ -1,0 +1,3 @@
+class HomePageListItem {
+  // String itemName;
+}
