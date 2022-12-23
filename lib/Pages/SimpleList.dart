@@ -8,7 +8,7 @@ class SimpleList extends StatefulWidget {
 }
 
 class _SimpleListState extends State<SimpleList> {
-  List<int> list = [1, 2, 3, 4, 5, 6, 7];
+  List<int> list = [1, 2, 3, 4, 5, 6, 7, 8];
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,16 @@ class _SimpleListState extends State<SimpleList> {
         title: const Text('Simple List'),
         centerTitle: true,
       ),
-      body: Column(
-        children: list.map((item) => Text(
-          '$item'
-        )).toList(),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: list.map((item) => SizedBox(
+            height: 30,
+            child: Text(
+              '$item',
+            ),
+          )).toList(),
+        ),
       ),
     );
   }
