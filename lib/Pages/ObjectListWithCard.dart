@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../DataModel/Book.dart';
+import '../Components/BookCard.dart';
 
 class ObjectListWithCard extends StatefulWidget {
   const ObjectListWithCard({Key? key}) : super(key: key);
@@ -29,32 +30,6 @@ class _ObjectListWithCardState extends State<ObjectListWithCard> {
     ),
   ];
 
-  Widget cardTemplate(Book bookItem) {
-    return Card(
-      margin: const EdgeInsets.fromLTRB(18, 18, 18, 0),
-      color: Colors.grey[100],
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 5, 12, 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              bookItem.name,
-              style: const TextStyle(
-                fontSize: 18,
-                height: 1.6
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              bookItem.author
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +40,14 @@ class _ObjectListWithCardState extends State<ObjectListWithCard> {
         backgroundColor: Colors.green,
       ),
       body: Column(
-        children: bookList.map((e) => cardTemplate(e)).toList(),
+        children: bookList.map((item) => BookAndAuthorCard(
+          bookItem: item,
+          delete: () {
+            setState(() {
+              bookList.remove(item);
+            });
+          },
+        )).toList(),
       ),
     );
   }

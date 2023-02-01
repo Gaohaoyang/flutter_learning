@@ -5,6 +5,7 @@ import './Pages/StatefulDemo.dart';
 import './Pages/SimpleList.dart';
 import './Pages/ObjectList.dart';
 import './Pages/ObjectListWithCard.dart';
+import './Pages/WorldClock.dart';
 import './DataModel/HomePageListItem.dart';
 
 void main() {
@@ -43,6 +44,10 @@ class _HomeState extends State<Home> {
     HomePageListItem(
       itemName: 'ObjectListWithCard(Book List)',
       pageWidget: const ObjectListWithCard(),
+    ),
+    HomePageListItem(
+      itemName: 'WorldClock',
+      pageWidget: const WorldClock(),
     ),
   ];
 
